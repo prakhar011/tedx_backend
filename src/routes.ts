@@ -9,17 +9,17 @@ import {
   createMessageHandler,
   getAllHandler,
 } from "./controller/message.controller";
-import validate from "./middleware/validate";
+import validateRes from "./middleware/validateRes";
 
 function routes(app: Express) {
   app.get("/bing", (req: Request, res: Response) => {
     res.status(200).send("Bong!!");
   });
   app.get("/getall-message", getAllHandler);
-  app.post("/message", validate(createMessageSchema), createMessageHandler);
+  app.post("/message", validateRes(createMessageSchema), createMessageHandler);
   app.post(
     "/createTransaction",
-    validate(createTransactionSchema),
+    validateRes(createTransactionSchema),
     createTransactionHandler
   );
   app.get("/verify", verifyHandler);
