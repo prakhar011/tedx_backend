@@ -6,7 +6,7 @@ function connect() {
   const dbUri = config.get<string>("dbUri");
   try {
     mongoose.connect(dbUri);
-    logger.info("db connected");
+    logger.info("db connected");  
     
   } catch (err) {
     logger.error("Could not connect to database");

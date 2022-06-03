@@ -15,7 +15,10 @@ export async function createTransaction(
 }
 export async function verify(
   val: DocumentDefinition<
-    Omit<TransactionDocument, "createdAt" | "updatedAt"|"name"|"transactionId">
+    Omit<
+      TransactionDocument,
+      "createdAt" | "updatedAt" | "name" | "transactionId"
+    >
   >
 ) {
   try {

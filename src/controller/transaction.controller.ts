@@ -27,6 +27,9 @@ export async function verifyHandler(
 ) {
   try {
     const details = await verify(req.body);
+    if (!(details.length > 0)) {
+      return res.status(404).send({"response":"No transaction found"});
+    }
     return res.send(details);
   } catch (err: any) {
     logger.error(err);

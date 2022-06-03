@@ -1,5 +1,5 @@
 import { createMessageSchema } from "./schema/message.schema";
-import { createTransactionSchema } from "./schema/transaction.schema";
+import { createTransactionSchema, verifySchema } from "./schema/transaction.schema";
 import { Express, Request, Response } from "express";
 import {
   createTransactionHandler,
@@ -22,6 +22,6 @@ function routes(app: Express) {
     validateRes(createTransactionSchema),
     createTransactionHandler
   );
-  app.get("/verify", verifyHandler);
+  app.get("/verify", validateRes(verifySchema),verifyHandler);
 }
 export default routes;
